@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CategoriesService, Category } from '@laness/products'
 
 @Component({
   selector: 'laness-categories-list',
@@ -6,12 +7,15 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class CategoriesListComponent {
+export class CategoriesListComponent implements OnInit {
+  
+  categories: Category[] = [];
+  
+  constructor(private categoriesServices: CategoriesService){}
 
-  categories = [
-    {id: 1, name: 'category-1', icon: 'icon-1'},
-    {id: 2, name: 'category-2', icon: 'icon-2'},
-    {id: 3, name: 'category-3', icon: 'icon-3'},
-  ]
-
+  ngOnInit(): void {
+    this.categoriesServices.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
+  }
 }

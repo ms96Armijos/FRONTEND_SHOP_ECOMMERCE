@@ -13,6 +13,7 @@ import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const UX_MODULE = [
@@ -22,6 +23,7 @@ const UX_MODULE = [
 @NgModule({
     declarations: [AppComponent, NxWelcomeComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoriesListComponent],
     imports: [BrowserModule,
+             HttpClientModule,
              ...UX_MODULE,
              RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
     providers: [],
